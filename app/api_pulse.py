@@ -1,5 +1,5 @@
 
-from app import app, api, celery, jwt
+from app import app, api, celery
 from app.processors import Pulse, Response
 from flask import Flask, request, g
 from flask_restful import Api, Resource, reqparse

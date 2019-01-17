@@ -1,4 +1,3 @@
-
 from app.models import StartupTasks, Tasks
 from app.operations import History, Beacon
 import datetime

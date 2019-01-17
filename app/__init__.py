@@ -11,7 +11,7 @@ api = Api(app)
 # Initialize DB and load models and views
 from  app.configs import *
 db = MongoEngine(app)
-celery = FlaskCelery.make(app)
+celery = FlaskCelery(app).make()
 
 # Import views
 from app import api_pulse

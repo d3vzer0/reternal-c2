@@ -4,5 +4,8 @@ celery_routes = {
     },
     'api.*': {
         'queue':'api'
+    },
+    'c2.*': {
+        'queue':'c2'
     }
 }
