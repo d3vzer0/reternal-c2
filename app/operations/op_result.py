@@ -15,7 +15,6 @@ class Result:
                 type=cmd_type, command=command)
             taskoutput.output.put(output, content_type=magic_type)
             taskoutput.save()
-
             ResponseSocket(self.task_id).respond(command, cmd_type, cmd_input, output, magic_type)
             result = {"result": "success", "data": "Succesfully inserted task result"}
 
