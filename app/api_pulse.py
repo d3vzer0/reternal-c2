@@ -1,12 +1,7 @@
 
 from app import app, api, celery
-from app.processors import Pulse, Response
 from flask import Flask, request, g
 from flask_restful import Api, Resource, reqparse
-from flask_jwt_extended import (
-    jwt_required, create_access_token,
-    get_jwt_identity, get_jwt_claims
-)
 
 
 class APIPulse(Resource):
@@ -31,20 +26,26 @@ class APIPulse(Resource):
             self.args.add_argument('input', location='json', required=True, help='Command input')
             self.args.add_argument('type', location='json', required=True, help='Command type')
 
-
     def post(self):
         platform_mapping = {
             "darwin": "macOS",
             "windows": "Windows",
             "linux": "Linux",
         }
+
         remote_ip = request.remote_addr
         args = self.args.parse_args()
+
         if args['task_id'] is None and "platform" in args :
             args['platform'] = platform_mapping[args['platform']]
-            result = Pulse(args.beacon_id).process(args, remote_ip, 'http')
+            get_tasks = celery.send_task('api.gettasks', args=(args.beacon_id, args,
+                remote_ip, 'http'), retry=True)
+            result = get_tasks.get()
         else:
-            result = Response(args.beacon_id, args.task_id).process(args)
+            process_results = celery.send_task('api.taskresult', args=(args.beacon_id,
+                args.task_id, args), retry=True)
+            result = process_results.get()
         return result
 
 api.add_resource(APIPulse, '/api/v1/ping')
+
