@@ -7,14 +7,17 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Make sure to define the JWT_SECRET and FLASK_SECRET in 
 # the docker(compose) configuration. ie:
-# ENV JWT_SECRET
-# ENV FLASK_SECRET
+# ENV C2_SECRET
+
 
 ARG CELERY_BROKER=redis://redis-service:6379
 ENV CELERY_BROKER="${CELERY_BROKER}"
 
 ARG CELERY_BACKEND=redis://redis-service:6379
 ENV CELERY_BACKEND="${CELERY_BACKEND}"
+
+ARG C2_PORT=8080
+ENV C2_PORT="${C2_PORT}"
 
 ARG MONGO_DB=reternal
 ENV MONGO_DB="${MONGO_DB}"
