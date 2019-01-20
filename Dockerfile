@@ -25,8 +25,8 @@ ENV MONGO_IP="${MONGO_IP}"
 ARG MONGO_PORT=27017
 ENV MONGO_PORT="${MONGO_PORT}"
 
-COPY . /reternal-backend
-WORKDIR /reternal-backend
+COPY . /reternal-c2
+WORKDIR /reternal-c2
 
 CMD python run.py
 

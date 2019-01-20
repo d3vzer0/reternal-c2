@@ -1,0 +1,12 @@
+amqp==2.1.4
+celery
+Flask
+Flask-RESTful
+Flask-Script
+Flask-SocketIO
+python-socketio
+redis==2.10.6
+flask-jwt-extended
+flask-cors
+flask_socketio
+
