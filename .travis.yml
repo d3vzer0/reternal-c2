@@ -9,5 +9,8 @@ install:
   - docker build -t reternal-c2 .
   - docker run -e "C2_SECRET=test_build_token_c2" -d -p 127.0.0.1:8080:8080 --name reternal-c2 reternal-c2
 
+before_script:
+  - sleep 10
+  
 script:
   - docker ps | grep -q reternal-c2
