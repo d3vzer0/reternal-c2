@@ -4,7 +4,6 @@ Flask
 Flask-RESTful
 Flask-Script
 Flask-SocketIO
-python-socketio
 redis
 python-socketio<4,>=2.1.0
 flask-jwt-extended
