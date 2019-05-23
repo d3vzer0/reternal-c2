@@ -1,10 +1,11 @@
 from Crypto.PublicKey import RSA
 from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto import Random
+from app import app
 import base64
 
 class Message:
-    def __init__(self, message, key_file='./priv.key'):
+    def __init__(self, message, key_file=app.config['PRIV_KEY']):
         self.key_file = RSA.import_key(open(key_file).read())
         self.message = message
 
