@@ -15,4 +15,5 @@ class ResultSchema(Schema):
     command = fields.Str(required=True)
     input = fields.Str(required=True)
     type = fields.Str(required=True)
+    output = fields.Str(required=True)
     
