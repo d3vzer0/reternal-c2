@@ -1,13 +1,5 @@
 from marshmallow import Schema, fields, INCLUDE, EXCLUDE, post_load, post_dump, pre_dump
-from workers.empire import ListenerFields
-
-class ListenerSchema(Schema):
-    http = fields.Nested(ListenerFields('http').create(),
-        description='Starts a http[s] listener (PowerShell or Python) that uses a GET/POST approach.')
-    meterpeter = fields.Nested(ListenerFields('meterpreter').create(),
-        description='Starts a foreign http[s] Meterpreter listener.')
-    redirector = fields.Nested(ListenerFields('redirector').create(),
-        description='Internal redirector listener. Active agent required. Listener options will be copied from another existing agent. Requires the active agent to be in an elevated context.')
+from workers.empire import Fields
 
 
 class AgentSchema(Schema):

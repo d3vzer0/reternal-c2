@@ -1,6 +1,5 @@
 import requests
 
-
 class Empire:
     def __init__(self, endpoint, base_url='https://localhost:1337/api/'):
         self.base_url = base_url
