@@ -23,6 +23,7 @@ class Fields:
             platform = stager['Name'].split('/')[0]
             stager_options = { option: self.to_field(attributes)
                 for option, attributes in stager['options'].items()}
-            stagers[mapping[platform]][stager['Name']] = stager_options
+            stagers[mapping[platform]][stager['Name']] = {'description': stager['Description'],
+                'options':stager_options }
         stagers['macOS'].update(stagers['Linux'])
         return stagers
