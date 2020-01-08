@@ -18,7 +18,7 @@ empire2:
     delete: c2.listeners.empire2.delete
   stagers:
     get: c2.stagers.empire2.get
-    set: c2.listeners.empire2.set
+    create: c2.stagers.empire2.create
   build:
     - name: listeners
       description: Choose a listener that the stager will use

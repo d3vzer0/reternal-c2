@@ -1,4 +1,4 @@
-from workers.empire import Listener, Listeners, Agents, Fields
+from workers.empire import Listener, Listeners, Agents, Fields, Stagers
 from workers.empire.schema import AgentSchema, ListenersSchema
 from workers.utils.fields import SchemaFields
 from workers import app
@@ -13,6 +13,15 @@ listeners = {
 def get_stagers():
     get_stagers = Fields().stagers()
     return get_stagers
+
+
+@app.task(name='c2.stagers.empire2.create')
+def create_stager(data):
+    print(data)
+    create_stager = Stagers().create(data)
+    stager_data = {'type':'text', 'content':create_stager[data['StagerName']]['Output']}
+    return stager_data
+
 
 @app.task(name='c2.listeners.empire2.delete')
 def delete_listener(listener_name):

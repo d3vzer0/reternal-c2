@@ -7,3 +7,6 @@ class Stagers:
 
     def get(self):
         return Empire(self._endpoint).get()
+
+    def create(self, data):
+        return Empire(self._endpoint).post(data)
