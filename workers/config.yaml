@@ -7,7 +7,8 @@ empire2:
     - macOS
     - Linux
   enabled: true
-  state: c2.state.empire2
+  modules:
+    get: c2.modules.empire2.get
   agents:
     get: c2.agents.empire2.get
     set: c2.agents.empire2.set
@@ -19,42 +20,34 @@ empire2:
   stagers:
     get: c2.stagers.empire2.get
     create: c2.stagers.empire2.create
-  build:
-    - name: listeners
-      description: Choose a listener that the stager will use
-      task: c2.listeners.empire.set
-    - name: BuildStager
-      description: 'Set parameters for stager'
-      task: 'c2.stagers.empire2.set'
-    - name: 'Build stager'
-      description: 'Build stager'
-      task: 'c2.stagers.empire2.build'
+  tasks:
+    create: c2.tasks.empire2.create
 
-covenant:
-  name: Covenant
-  description: Covenant is a .NET command and control framework that aims to highlight the attack surface of .NET, make the use of offensive .NET tradecraft easier, and serve as a collaborative command and control platform for red teamers. Covenant is an ASP.NET Core, cross-platform application that includes a web-based interface that allows for multi-user collaboration.
-  thumbnail: https://www.fatrodzianko.com/wp-content/uploads/2019/08/covenant-c2_create-listener.jpg
-  platforms:
-    - Windows
-  enabled: false
-  state: c2.state.empire2
-  agents:
-    get: c2.agents.covenant.get
-    set: c2.agents.covenant.set
-  listeners:
-    get: c2.listeners.covenant.get
-    set: c2.listeners.covenant.set
-  stagers:
-    get: c2.stagers.covenant.get
-    set: c2.listeners.covenant.set
-  build:
-    - name: listeners
-      description: Choose a listener that the stager will use
-      task: c2.listeners.covenant.set
-    - name: BuildStager
-      description: 'Set parameters for stager'
-      task: 'c2.stagers.covenant.set'
-    - name: 'Build stager'
-      description: 'Build stager'
-      task: 'c2.stagers.covenant.build'
+# covenant:
+#   name: Covenant
+#   description: Covenant is a .NET command and control framework that aims to highlight the attack surface of .NET, make the use of offensive .NET tradecraft easier, and serve as a collaborative command and control platform for red teamers. Covenant is an ASP.NET Core, cross-platform application that includes a web-based interface that allows for multi-user collaboration.
+#   thumbnail: https://www.fatrodzianko.com/wp-content/uploads/2019/08/covenant-c2_create-listener.jpg
+#   platforms:
+#     - Windows
+#   enabled: false
+#   state: c2.state.empire2
+#   agents:
+#     get: c2.agents.covenant.get
+#     set: c2.agents.covenant.set
+#   listeners:
+#     get: c2.listeners.covenant.get
+#     set: c2.listeners.covenant.set
+#   stagers:
+#     get: c2.stagers.covenant.get
+#     set: c2.listeners.covenant.set
+#   build:
+#     - name: listeners
+#       description: Choose a listener that the stager will use
+#       task: c2.listeners.covenant.set
+#     - name: BuildStager
+#       description: 'Set parameters for stager'
+#       task: 'c2.stagers.covenant.set'
+#     - name: 'Build stager'
+#       description: 'Build stager'
+#       task: 'c2.stagers.covenant.build'
       
