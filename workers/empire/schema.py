@@ -1,5 +1,6 @@
 from marshmallow import Schema, fields, INCLUDE, EXCLUDE, post_load, post_dump, pre_dump
 from workers.empire import Fields
+from typing import List, Dict
 
 
 class AgentSchema(Schema):
@@ -32,3 +33,13 @@ class ListenersSchema(Schema):
     def get_listener_options(self, data):
         listener_options = {item: options['Value'] for item, options in data['options'].items()}
         return listener_options
+
+
+class RunModuleIn(Schema):
+    module: str
+    agent: str
+    input: Dict
+
+class RunShellIn(Schema):
+    agent: str
+    input: str

@@ -1,2 +1,2 @@
-from workers.empire.api.empire import Empire
-
+import requests
+from workers.environment import config

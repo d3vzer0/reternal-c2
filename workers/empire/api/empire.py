@@ -1,6 +1,17 @@
 import requests
 import functools
 from workers.environment import config
+import logging
+
+empirelog = logging.getLogger('rtempire')
+get_token = requests.post(f'{config["EMPIRE_PATH"]}admin/login',
+    json={'username': config['EMPIRE_USERNAME'], 'password': config['EMPIRE_PASSWORD']},
+    verify=False)
+
+if get_token.status_code == 200:
+    empire_token = get_token.json()['token']
+else:
+    empirelog.error('Invalid Empire credentials')
 
 # Empire does not return JSON when an error occurs
 # overwrite default response when status is not 200
@@ -18,12 +29,10 @@ def check_response(func):
         return result
     return wrapper_check_response
 
-
 # Generic EMPIRE API class
-
 class Empire:
     def __init__(self, endpoint, base_url=config['EMPIRE_PATH'],
-        token=config['EMPIRE_TOKEN']):
+        token=empire_token):
         self.base_url = base_url
         self.endpoint = endpoint
         self.token = token

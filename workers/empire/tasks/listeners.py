@@ -12,8 +12,8 @@ listeners = {
 def parse_options(listener_type) -> dict:
     ''' Get available listeners and the available parameters '''
     get_options = Empire(f'listeners/options/{listener_type}').get()
-    result = get_options['response'] if get_options['status'] == 200 else {}
-    return result
+    field_options = { listener: Fields(attribute).to_string() for listener, attribute in get_options['response']['listeneroptions'].items()}      
+    return field_options
 
 @app.task(name='c2.listeners.empire2.delete')
 def delete_listener(listener_name: str) -> dict:
@@ -40,4 +40,4 @@ def get_listener_options() -> dict:
     ''' Get available listeners and the available parameters '''
     all_listeners = {listener: {'description': description, 'options': parse_options(listener)}
         for listener, description in listeners.items()}
-    return all_listeners
+    return {'code': 200, 'response': all_listeners }

@@ -9,6 +9,7 @@ empire2:
   enabled: true
   modules:
     get: c2.modules.empire2.get
+    run: c2.modules.empire2.run
   agents:
     get: c2.agents.empire2.get
     set: c2.agents.empire2.set
@@ -23,6 +24,32 @@ empire2:
   tasks:
     create: c2.tasks.empire2.create
 
+empire3:
+  name: EmpireV3
+  description: Empire 3.1 is a post-exploitation framework that includes a pure-PowerShell 2.0 Windows agent, and compatibility with Python 3.x Linux/OS X agents. It is the merger of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and flexible architecture.
+  thumbnail: https://user-images.githubusercontent.com/20302208/70022749-1ad2b080-154a-11ea-9d8c-1b42632fd9f9.jpg
+  platforms:
+    - Windows
+    - macOS
+    - Linux
+  enabled: true
+  modules:
+    get: c2.modules.empire2.get
+    run: c2.modules.empire2.run
+  agents:
+    get: c2.agents.empire2.get
+    set: c2.agents.empire2.set
+  listeners:
+    get: c2.listeners.empire2.get
+    create: c2.listeners.empire2.create
+    options: c2.listeners.empire2.options
+    delete: c2.listeners.empire2.delete
+  stagers:
+    get: c2.stagers.empire2.get
+    create: c2.stagers.empire2.create
+  tasks:
+    create: c2.tasks.empire2.create
+    
 # covenant:
 #   name: Covenant
 #   description: Covenant is a .NET command and control framework that aims to highlight the attack surface of .NET, make the use of offensive .NET tradecraft easier, and serve as a collaborative command and control platform for red teamers. Covenant is an ASP.NET Core, cross-platform application that includes a web-based interface that allows for multi-user collaboration.
