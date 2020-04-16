@@ -1,37 +1,25 @@
-FROM python:3.6
+FROM python:3.8-slim
 
 RUN apt-get update && apt-get -y upgrade && apt-get -y install gcc python3-dev
+RUN pip3 install virtualenv
+
+RUN useradd -ms /bin/bash reternal
+USER reternal
+WORKDIR /home/reternal
+
+ENV VIRTUAL_ENV=/home/reternal/venv
+RUN virtualenv -p python3 $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-# Make sure to define the JWT_SECRET and FLASK_SECRET in 
-# the docker(compose) configuration. ie:
-# ENV C2_SECRET
-
-
-ARG CELERY_BROKER=redis://redis-service:6379
+ARG CELERY_BROKER=redis://redis:6379
 ENV CELERY_BROKER="${CELERY_BROKER}"
 
-ARG CELERY_BACKEND=redis://redis-service:6379
+ARG CELERY_BACKEND=redis://redis:6379
 ENV CELERY_BACKEND="${CELERY_BACKEND}"
 
-ARG C2_PORT=8080
-ENV C2_PORT="${C2_PORT}"
+ADD workers /home/reternal/workers
 
-ARG MONGO_DB=reternal
-ENV MONGO_DB="${MONGO_DB}"
-
-ARG MONGO_IP=mongodb
-ENV MONGO_IP="${MONGO_IP}"
-
-ARG MONGO_PORT=27017
-ENV MONGO_PORT="${MONGO_PORT}"
-
-COPY . /reternal-c2
-WORKDIR /reternal-c2
-
-CMD python run.py
-
-
-
+ENTRYPOINT ["celery", "-A", "workers", "worker"]
