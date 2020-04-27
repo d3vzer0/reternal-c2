@@ -1,5 +1,5 @@
 from marshmallow import Schema, fields, INCLUDE, EXCLUDE, post_load, post_dump, pre_dump
-from workers.empire3 import Fields
+from workers.empire2 import Fields
 from typing import List, Dict
 
 

@@ -1,1 +1,1 @@
-from workers.empire.api.fields import Fields
+from workers.empire3.api.fields import Fields

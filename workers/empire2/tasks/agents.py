@@ -1,9 +1,9 @@
-from workers.empire3.api.empire import Empire
-from workers.empire3.schema import AgentSchema
-from workers.empire3 import Fields
+from workers.empire2.api.empire import Empire
+from workers.empire2.schema import AgentSchema
+from workers.empire2 import Fields
 from workers import app
 
-@app.task(name='c2.agents.empire3.get')
+@app.task(name='c2.agents.empire2.get')
 def get_agents(agent_id: str = None):
     ''' Get active agents from Empire '''
     http_response = Empire(f'agent/{agent_id}').get() if agent_id else Empire('agents').get()
