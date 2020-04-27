@@ -18,7 +18,7 @@ def parse_stagers(all_stagers: list) -> dict:
     stagers['macOS'].update(stagers['Linux'])
     return stagers
 
-@app.task(name='c2.stagers.empire2.get')
+@app.task(name='c2.stagers.empire3.get')
 def get_stagers() -> dict:
     ''' Get available stagers from Empire '''
     http_response = Empire('stagers').get()
@@ -26,7 +26,7 @@ def get_stagers() -> dict:
         http_response['response'] = parse_stagers(http_response['response']['stagers'])
     return http_response
 
-@app.task(name='c2.stagers.empire2.create')
+@app.task(name='c2.stagers.empire3.create')
 def create_stager(data: dict) -> dict:
     ''' Create a specific stager '''
     http_response = Empire('stagers').post(data)

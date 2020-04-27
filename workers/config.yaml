@@ -1,29 +1,3 @@
-empire2:
-  name: EmpireV2
-  description: Empire is a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python 2.6/2.7 Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection, all wrapped up in a usability-focused framework.
-  thumbnail: https://d21ic6tdqjqnyw.cloudfront.net/wp-content/uploads/2015/08/08085833/empire_main_menu-1024x622.jpg
-  platforms:
-    - Windows
-    - macOS
-    - Linux
-  enabled: true
-  modules:
-    get: c2.modules.empire2.get
-    run: c2.modules.empire2.run
-  agents:
-    get: c2.agents.empire2.get
-    set: c2.agents.empire2.set
-  listeners:
-    get: c2.listeners.empire2.get
-    create: c2.listeners.empire2.create
-    options: c2.listeners.empire2.options
-    delete: c2.listeners.empire2.delete
-  stagers:
-    get: c2.stagers.empire2.get
-    create: c2.stagers.empire2.create
-  tasks:
-    create: c2.tasks.empire2.create
-
 empire3:
   name: EmpireV3
   description: Empire 3.1 is a post-exploitation framework that includes a pure-PowerShell 2.0 Windows agent, and compatibility with Python 3.x Linux/OS X agents. It is the merger of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and flexible architecture.
@@ -34,21 +8,49 @@ empire3:
     - Linux
   enabled: true
   modules:
-    get: c2.modules.empire2.get
-    run: c2.modules.empire2.run
+    get: c2.modules.empire3.get
+    run: c2.modules.empire3.run
   agents:
-    get: c2.agents.empire2.get
-    set: c2.agents.empire2.set
+    get: c2.agents.empire3.get
+    set: c2.agents.empire3.set
   listeners:
-    get: c2.listeners.empire2.get
-    create: c2.listeners.empire2.create
-    options: c2.listeners.empire2.options
-    delete: c2.listeners.empire2.delete
+    get: c2.listeners.empire3.get
+    create: c2.listeners.empire3.create
+    options: c2.listeners.empire3.options
+    delete: c2.listeners.empire3.delete
   stagers:
-    get: c2.stagers.empire2.get
-    create: c2.stagers.empire2.create
+    get: c2.stagers.empire3.get
+    create: c2.stagers.empire3.create
   tasks:
-    create: c2.tasks.empire2.create
+    create: c2.tasks.empire3.create
+
+# empire2:
+#   name: EmpireV2
+#   description: Empire is a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python 2.6/2.7 Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection, all wrapped up in a usability-focused framework.
+#   thumbnail: https://d21ic6tdqjqnyw.cloudfront.net/wp-content/uploads/2015/08/08085833/empire_main_menu-1024x622.jpg
+#   platforms:
+#     - Windows
+#     - macOS
+#     - Linux
+#   enabled: true
+#   modules:
+#     get: c2.modules.empire2.get
+#     run: c2.modules.empire2.run
+#   agents:
+#     get: c2.agents.empire2.get
+#     set: c2.agents.empire2.set
+#   listeners:
+#     get: c2.listeners.empire2.get
+#     create: c2.listeners.empire2.create
+#     options: c2.listeners.empire2.options
+#     delete: c2.listeners.empire2.delete
+#   stagers:
+#     get: c2.stagers.empire2.get
+#     create: c2.stagers.empire2.create
+#   tasks:
+#     create: c2.tasks.empire2.create
+
+
     
 # covenant:
 #   name: Covenant

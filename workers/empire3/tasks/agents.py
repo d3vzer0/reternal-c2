@@ -3,7 +3,7 @@ from workers.empire.schema import AgentSchema
 from workers.empire import Fields
 from workers import app
 
-@app.task(name='c2.agents.empire2.get')
+@app.task(name='c2.agents.empire3.get')
 def get_agents(agent_id: str = None):
     ''' Get active agents from Empire '''
     http_response = Empire(f'agent/{agent_id}').get() if agent_id else Empire('agents').get()

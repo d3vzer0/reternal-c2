@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 app = Celery('c2', backend=config['CELERY_BACKEND'], broker=config['CELERY_BACKEND'])
 app.autodiscover_tasks([
-    'workers.empire',
+    'workers.empire3',
     'workers.system'
 ])
 
