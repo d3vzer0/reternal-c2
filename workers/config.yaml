@@ -1,28 +1,28 @@
-empire3:
-  name: EmpireV3
-  description: NOTE DOES NOT WORK WITH PYTHON YET. Empire 3.1 is a post-exploitation framework that includes a pure-PowerShell 2.0 Windows agent, and compatibility with Python 3.x Linux/OS X agents. It is the merger of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and flexible architecture.
-  thumbnail: https://user-images.githubusercontent.com/20302208/70022749-1ad2b080-154a-11ea-9d8c-1b42632fd9f9.jpg
-  platforms:
-    - Windows
-    - macOS
-    - Linux
-  enabled: true
-  modules:
-    get: c2.modules.empire3.get
-    run: c2.modules.empire3.run
-  agents:
-    get: c2.agents.empire3.get
-    set: c2.agents.empire3.set
-  listeners:
-    get: c2.listeners.empire3.get
-    create: c2.listeners.empire3.create
-    options: c2.listeners.empire3.options
-    delete: c2.listeners.empire3.delete
-  stagers:
-    get: c2.stagers.empire3.get
-    create: c2.stagers.empire3.create
-  tasks:
-    create: c2.tasks.empire3.create
+# empire3:
+#   name: EmpireV3
+#   description: NOTE DOES NOT WORK WITH PYTHON YET. Empire 3.1 is a post-exploitation framework that includes a pure-PowerShell 2.0 Windows agent, and compatibility with Python 3.x Linux/OS X agents. It is the merger of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and flexible architecture.
+#   thumbnail: https://user-images.githubusercontent.com/20302208/70022749-1ad2b080-154a-11ea-9d8c-1b42632fd9f9.jpg
+#   platforms:
+#     - Windows
+#     - macOS
+#     - Linux
+#   enabled: true
+#   modules:
+#     get: c2.modules.empire3.get
+#     run: c2.modules.empire3.run
+#   agents:
+#     get: c2.agents.empire3.get
+#     set: c2.agents.empire3.set
+#   listeners:
+#     get: c2.listeners.empire3.get
+#     create: c2.listeners.empire3.create
+#     options: c2.listeners.empire3.options
+#     delete: c2.listeners.empire3.delete
+#   stagers:
+#     get: c2.stagers.empire3.get
+#     create: c2.stagers.empire3.create
+#   tasks:
+#     create: c2.tasks.empire3.create
 
 empire2:
   name: EmpireV2
