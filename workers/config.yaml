@@ -27,7 +27,7 @@
 empire2:
   name: EmpireV2
   description: Empire is a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python 2.6/2.7 Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection, all wrapped up in a usability-focused framework.
-  thumbnail: https://d21ic6tdqjqnyw.cloudfront.net/wp-content/uploads/2015/08/08085833/empire_main_menu-1024x622.jpg
+  thumbnail: https://user-images.githubusercontent.com/20302208/70022749-1ad2b080-154a-11ea-9d8c-1b42632fd9f9.jpg
   platforms:
     - Windows
     - macOS
