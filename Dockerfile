@@ -22,4 +22,4 @@ ENV CELERY_BACKEND="${CELERY_BACKEND}"
 
 ADD workers /home/reternal/workers
 
-ENTRYPOINT ["celery", "-A", "workers", "worker"]
+ENTRYPOINT ["celery", "-A", "workers", "worker", "-Q", "c2"]
