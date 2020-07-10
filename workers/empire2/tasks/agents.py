@@ -7,7 +7,6 @@ from workers import app
 def get_agents(agent_id: str = None):
     ''' Get active agents from Empire '''
     http_response = Empire(f'agent/{agent_id}').get() if agent_id else Empire('agents').get()
-    print(http_response)
     if http_response['status'] == 200:
         http_response['response'] = AgentSchema().load(http_response['response']['agents'], many=True)
     return http_response

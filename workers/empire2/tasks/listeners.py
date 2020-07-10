@@ -12,7 +12,6 @@ listeners = {
 def parse_options(listener_type) -> dict:
     ''' Get available listeners and the available parameters '''
     get_options = Empire(f'listeners/options/{listener_type}').get()
-    print(get_options)
     field_options = { listener: Fields(attribute).to_string() for listener, attribute in get_options['response']['listeneroptions'].items()}      
     return field_options
 
