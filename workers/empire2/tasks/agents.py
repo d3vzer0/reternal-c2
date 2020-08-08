@@ -11,3 +11,15 @@ def get_agents(agent_id: str = None):
         http_response['response'] = AgentSchema().load(http_response['response']['agents'], many=True)
     return http_response
 
+@app.task(name='c2.agents.empire2.stop')
+def get_agents(agent_id: str = None):
+    ''' Stop active agent '''
+    http_response = Empire(f'agents/{agent_id}/kill').get()
+    return http_response
+
+@app.task(name='c2.agents.empire2.delete')
+def get_agents(agent_id: str = None):
+    ''' Stop active agent '''
+    http_response = Empire(f'agents/{agent_id}').delete()
+    return http_response
+

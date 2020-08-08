@@ -39,6 +39,8 @@ empire2:
   agents:
     get: c2.agents.empire2.get
     set: c2.agents.empire2.set
+    delete: c2.agents.empire2.delete
+    stop: c2.agents.empire2.stop
   listeners:
     get: c2.listeners.empire2.get
     create: c2.listeners.empire2.create

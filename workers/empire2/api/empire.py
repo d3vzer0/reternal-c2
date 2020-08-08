@@ -1,17 +1,9 @@
+from workers.environment import config
+from workers.main import rediscache
+from workers.empire2.api import empirelog
+from workers.empire2.api.get_token import get_token
 import requests
 import functools
-import logging
-from workers.environment import config
-
-empirelog = logging.getLogger('rtempire')
-get_token = requests.post(f'{config["EMPIRE_PATH"]}admin/login',
-    json={'username': config['EMPIRE_USERNAME'], 'password': config['EMPIRE_PASSWORD']},
-    verify=False)
-
-if get_token.status_code == 200:
-    empire_token = get_token.json()['token']
-else:
-    empirelog.error('Invalid Empire credentials')
 
 # Empire does not return JSON when an error occurs
 # overwrite default response when status is not 200
@@ -31,11 +23,13 @@ def check_response(func):
 
 # Generic EMPIRE API class
 class Empire:
-    def __init__(self, endpoint, base_url=config['EMPIRE_PATH'],
-        token=empire_token):
+    def __init__(self, endpoint, base_url=config['EMPIRE_PATH']):
         self.base_url = base_url
         self.endpoint = endpoint
-        self.token = token
+
+        # Check redis if token exists else initiate login
+        token = rediscache.get('cache-empiretoken')
+        self.token = token if token else get_token()
 
     @check_response
     def get(self):

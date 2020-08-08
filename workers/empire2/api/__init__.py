@@ -1,2 +1,2 @@
-import requests
-from workers.environment import config
+import logging
+empirelog = logging.getLogger('rtempire')
