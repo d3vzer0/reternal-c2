@@ -14,12 +14,6 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-ARG CELERY_BROKER=redis://redis:6379
-ENV CELERY_BROKER="${CELERY_BROKER}"
-
-ARG CELERY_BACKEND=redis://redis:6379
-ENV CELERY_BACKEND="${CELERY_BACKEND}"
-
 ADD workers /home/reternal/workers
 
-ENTRYPOINT ["celery", "-A", "workers", "worker", "-Q", "c2"]
+ENTRYPOINT ["celery", "--app", "workers", "worker", "-Q", "c2"]
