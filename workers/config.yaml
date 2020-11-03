@@ -6,7 +6,7 @@
 #     - Windows
 #     - macOS
 #     - Linux
-#   enabled: true
+#   enabled: false
 #   modules:
 #     get: c2.modules.empire3.get
 #     run: c2.modules.empire3.run
@@ -32,7 +32,7 @@ empire2:
     - Windows
     - macOS
     - Linux
-  enabled: false
+  enabled: true
   modules:
     get: c2.modules.empire2.get
     run: c2.modules.empire2.run
